@@ -37,7 +37,7 @@ public:
     os << "[ ";
     while (current)
     {
-      os << current->data << " ";
+      os << current->data << " ---> ";
       current = current->next;
     }
     os << "]";
@@ -45,8 +45,6 @@ public:
     return os;
   }
 };
-
-#include "SingleLinkedList.h"
 
 template <typename T>
 SingleLinkedList<T>::SingleLinkedList() : head(nullptr), listSize(0) {}
@@ -59,7 +57,6 @@ bool SingleLinkedList<T>::empty() const
     return true;
   }
   return false;
-  // return size == 0;
 }
 
 template <typename T>
@@ -138,7 +135,7 @@ T &SingleLinkedList<T>::elementAt(int index)
 {
   if (index < 0 || index >= listSize)
   {
-    throw LinkedListException("Out of range");
+    throw LinkedListException("Invalid index");
   }
 
   auto current = head;
