@@ -208,7 +208,7 @@ int DoubleLinkedList<T>::find(const T &value)
     }
     current = current->next;
   }
-  return -1;
+  throw LinkedListException("Element is not found.");
 }
 
 template <typename T>

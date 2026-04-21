@@ -121,11 +121,11 @@ void SingleLinkedList<T>::pop_back()
   else
   {
     auto current = head;
-    while (current->next->next)
+    while (current->next->next) // поточний-передостанній-останній(рухаємось, поки після поточного ще є два елементи, щоб могти останній занулити)
     {
       current = current->next;
     }
-    current->next = nullptr;
+    current->next = nullptr; // наступний після передостаннього(останній) зануляємо
   }
   listSize--;
 }
@@ -213,7 +213,7 @@ int SingleLinkedList<T>::find(const T &value)
 
     current = current->next;
   }
-  return -1;
+  throw LinkedListException("Element is not found.");
 }
 
 #endif

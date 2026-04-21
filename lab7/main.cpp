@@ -16,6 +16,7 @@ int main()
     sList.push_back(10);
     sList.push_back(20);
     sList.push_front(5);
+    sList.insertAt(1, 100);
 
     cout << sList << " Size: " << sList.size() << endl;
 
@@ -25,6 +26,8 @@ int main()
     DoubleLinkedList<string> dList;
     dList.push_back("Hello");
     dList.push_back("World");
+    cout << dList << endl;
+    dList.removeAt(1);
     cout << dList << endl;
 
     cout << "Element at index 1: " << dList.elementAt(1) << endl;
