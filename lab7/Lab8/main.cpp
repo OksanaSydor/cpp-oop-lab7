@@ -1,6 +1,7 @@
 #include <iostream>
 #include <array>
 #include <vector>
+#include <deque>
 #include <string>
 #include "Student.h"
 
@@ -94,6 +95,54 @@ void insertRange(vector<T> &first, const vector<T> &second, int position)
   }
 }
 
+// Task 3
+
+template <typename T>
+void printDeque(const deque<T> &deque)
+{
+  for (auto it = deque.begin(); it != deque.end(); ++it)
+  {
+    cout << *it << " ";
+  }
+  cout << endl;
+}
+
+template <typename T>
+void deleteMiddle(deque<T> &deque)
+{
+  if (deque.empty())
+  {
+    cout << "Deque is empty." << endl;
+    return;
+  }
+
+  int n = deque.size();
+
+  if (n % 2 != 0)
+  {
+    auto it = deque.begin();
+
+    for (int i = 0; i < (n / 2); i++)
+    {
+      ++it;
+    }
+
+    deque.erase(it);
+  }
+  else
+  {
+    auto it = deque.begin();
+
+    for (int i = 0; i < (n / 2) - 1; i++)
+    {
+      ++it;
+    }
+
+    it = deque.erase(it);
+    deque.erase(it);
+  }
+}
+
 int main()
 {
   cout << "---------- Task 1 ----------" << endl;
@@ -177,6 +226,45 @@ int main()
 
   cout << "After: ";
   printVector(vst1);
+  cout << "\n";
+
+  cout << "---------- Task 3 ----------" << endl;
+  cout << "\n";
+
+  deque<int> d1 = {1, 2, 3, 4, 5};
+  cout << "Before: ";
+  printDeque(d1);
+
+  deleteMiddle(d1);
+
+  cout << "After: ";
+  printDeque(d1);
+  cout << "\n";
+
+  deque<char> d2 = {'A', 'B', 'C', 'D'};
+  cout << "Before: ";
+  printDeque(d2);
+
+  deleteMiddle(d2);
+
+  cout << "After: ";
+  printDeque(d2);
+  cout << "\n";
+
+  deque<Student> d3 = {
+      Student("Arsen", 99),
+      Student("Ira", 88),
+      Student("Nastia", 85),
+      Student("Marta", 91),
+      Student("Liliia", 89)};
+
+  cout << "Before: ";
+  printDeque(d3);
+
+  deleteMiddle(d3);
+
+  cout << "After: ";
+  printDeque(d3);
   cout << "\n";
 
   return 0;
