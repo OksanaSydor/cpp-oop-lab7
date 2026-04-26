@@ -1,7 +1,7 @@
 #include <iostream>
 #include <array>
 #include <string>
-// #include "Student.h"
+#include "Student.h"
 
 using namespace std;
 
@@ -62,6 +62,7 @@ int main()
 
   cout << "After: ";
   printArray(a1);
+  cout << "\n";
 
   array<string, 4> a2 = {"A", "B", "C", "D"};
 
@@ -72,6 +73,20 @@ int main()
 
   cout << "After: ";
   printArray(a2);
+  cout << "\n";
+
+  array<Student, 3> a3 = {
+      Student("Oksana", 99),
+      Student("Ira", 88),
+      Student("Nastia", 85)};
+
+  cout << "Before: ";
+  printArray(a3);
+
+  shiftClockwise(a3, 1);
+
+  cout << "After: ";
+  printArray(a3);
 
   return 0;
 }
