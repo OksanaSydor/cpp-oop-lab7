@@ -6,6 +6,7 @@
 #include <array>
 #include <string>
 #include <deque>
+#include <set>
 
 using namespace std;
 
@@ -64,6 +65,29 @@ void printDeque(const deque<T> &d)
   cout << '\n';
 }
 
+// Task 4
+struct WithinRange
+{
+  int minValue;
+  int maxValue;
+
+  WithinRange(int min, int max) : minValue(min), maxValue(max) {}
+
+  bool operator()(int value) const
+  {
+    return value >= minValue && value <= maxValue;
+  }
+};
+
+void printSet(const set<int> &s)
+{
+  for (const int &value : s)
+  {
+    cout << value << " ";
+  }
+  cout << '\n';
+}
+
 int main()
 {
   cout << "----------Task 1----------" << endl;
@@ -111,6 +135,19 @@ int main()
 
   cout << "After :\n";
   printDeque(prices);
+
+  cout << "----------Task 4----------" << endl;
+
+  set<int> snumbers = {1, 5, 10, 15, 20, 25, 30};
+
+  int min = 5;
+  int max = 25;
+
+  int count = count_if(snumbers.begin(), snumbers.end(), WithinRange(min, max));
+
+  cout << "Set: " << endl;
+  printSet(snumbers);
+  cout << "Amount of numbers in range from " << min << " to " << max << ": " << count << endl;
 
   return 0;
 }
