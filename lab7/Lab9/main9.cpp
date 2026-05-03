@@ -184,5 +184,21 @@ int main()
   cout << "After: \n";
   printVector(vnumbers);
 
+  cout << "----------Task 7----------" << endl;
+  double sum = 0;
+
+  for_each(vnumbers.begin(), vnumbers.end(), [&sum](int n)
+           { sum += n; });
+
+  double average = 0;
+
+  if (!vnumbers.empty())
+  {
+    average = sum / vnumbers.size();
+  }
+
+  cout << "Sum: " << sum << endl;
+  cout << "Average: " << average << endl;
+
   return 0;
 }
