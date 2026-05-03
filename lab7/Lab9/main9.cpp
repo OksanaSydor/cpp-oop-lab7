@@ -8,6 +8,7 @@
 #include <deque>
 #include <set>
 #include <map>
+#include <vector>
 
 using namespace std;
 
@@ -80,9 +81,20 @@ struct WithinRange
   }
 };
 
+// Task 5
 void printSet(const set<int> &s)
 {
   for (const int &value : s)
+  {
+    cout << value << " ";
+  }
+  cout << '\n';
+}
+
+// Task 6
+void printVector(vector<int> &v)
+{
+  for (const int &value : v)
   {
     cout << value << " ";
   }
@@ -158,6 +170,19 @@ int main()
 
   for_each(foodstuff.begin(), foodstuff.end(), [](const pair<string, int> &item)
            {if (item.second > 100){cout << item.first << ": " << item.second << endl;} });
+
+  cout << "----------Task 6----------" << endl;
+
+  vector<int> vnumbers = {-4, 10, -25, -3, 2, 90, 8};
+
+  cout << "Before: \n";
+  printVector(vnumbers);
+
+  replace_if(vnumbers.begin(), vnumbers.end(), [](int n)
+             { return n < 0; }, 0);
+
+  cout << "After: \n";
+  printVector(vnumbers);
 
   return 0;
 }
