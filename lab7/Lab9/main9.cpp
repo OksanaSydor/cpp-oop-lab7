@@ -101,6 +101,14 @@ void printVector(vector<int> &v)
   cout << '\n';
 }
 
+// Task 8
+bool isVowel(char c)
+{
+  c = tolower(c);
+
+  return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'y';
+}
+
 int main()
 {
   cout << "----------Task 1----------" << endl;
@@ -185,6 +193,7 @@ int main()
   printVector(vnumbers);
 
   cout << "----------Task 7----------" << endl;
+
   double sum = 0;
 
   for_each(vnumbers.begin(), vnumbers.end(), [&sum](int n)
@@ -199,6 +208,15 @@ int main()
 
   cout << "Sum: " << sum << endl;
   cout << "Average: " << average << endl;
+
+  cout << "----------Task 8----------" << endl;
+
+  string text = "The eight task.";
+
+  int count2 = count_if(text.begin(), text.end(), isVowel);
+
+  cout << "Text: " << text << endl;
+  cout << "Amount of vowels: " << count2 << endl;
 
   return 0;
 }
