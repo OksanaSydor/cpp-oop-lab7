@@ -5,6 +5,7 @@
 #include <ctime>
 #include <array>
 #include <string>
+#include <deque>
 
 using namespace std;
 
@@ -34,6 +35,29 @@ template <typename T, size_t size>
 void printArray(const array<T, size> &arr)
 {
   for (const T &value : arr)
+  {
+    cout << value << " ";
+  }
+  cout << '\n';
+}
+
+// Task 3
+struct TaxApplier
+{
+  double taxRate;
+
+  TaxApplier(double taxRate) : taxRate(taxRate) {}
+
+  void operator()(double &price)
+  {
+    price *= (1 + taxRate);
+  }
+};
+
+template <typename T>
+void printDeque(const deque<T> &d)
+{
+  for (const T &value : d)
   {
     cout << value << " ";
   }
@@ -73,6 +97,20 @@ int main()
 
   cout << "After: \n";
   printArray(names);
+
+  cout << "----------Task 3----------" << endl;
+
+  deque<double> prices = {100.0, 250.5, 80.0, 120.75};
+
+  cout << "Before: \n";
+  printDeque(prices);
+
+  TaxApplier tax(0.2);
+
+  for_each(prices.begin(), prices.end(), tax);
+
+  cout << "After :\n";
+  printDeque(prices);
 
   return 0;
 }
