@@ -7,6 +7,7 @@
 #include <string>
 #include <deque>
 #include <set>
+#include <map>
 
 using namespace std;
 
@@ -148,6 +149,15 @@ int main()
   cout << "Set: " << endl;
   printSet(snumbers);
   cout << "Amount of numbers in range from " << min << " to " << max << ": " << count << endl;
+
+  cout << "----------Task 5----------" << endl;
+
+  map<string, int> foodstuff = {{"Apples", 54}, {"Cucumbers", 230}, {"Chocolate bars", 200}, {"Milk", 87}, {"Bread", 187}};
+
+  cout << "Items which are enough: \n";
+
+  for_each(foodstuff.begin(), foodstuff.end(), [](const pair<string, int> &item)
+           {if (item.second > 100){cout << item.first << ": " << item.second << endl;} });
 
   return 0;
 }
