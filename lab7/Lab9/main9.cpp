@@ -159,12 +159,14 @@ int main()
 
   cout << "----------Task 4----------" << endl;
 
-  set<int> snumbers = {1, 5, 10, 15, 20, 25, 30};
+  set<int> snumbers = {-3, 0, 1, 5, 10, 15, 20, 25, 30, 43, 80};
 
   int min = 5;
-  int max = 25;
+  int max = 20;
 
-  int count = count_if(snumbers.begin(), snumbers.end(), WithinRange(min, max));
+  WithinRange range(min, max);
+
+  int count = count_if(snumbers.begin(), snumbers.end(), range);
 
   cout << "Set: " << endl;
   printSet(snumbers);
